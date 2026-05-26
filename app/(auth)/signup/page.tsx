@@ -1,10 +1,24 @@
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
+import { createClient } from '@/lib/supabase/server'
 
 export const metadata = {
   title: 'Join Finding Nami',
 }
 
-export default function SignupPage() {
+export default async function SignupPage() {
+  const supabase = createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('industry')
+      .eq('id', user.id)
+      .single()
+    redirect(profile?.industry ? '/feed' : '/onboarding')
+  }
+
   return (
     <div className="w-full max-w-md bg-white rounded-2xl shadow-sm border border-stone-100 p-8 text-center">
       <span className="text-brand-orange font-extrabold text-2xl tracking-tight">
