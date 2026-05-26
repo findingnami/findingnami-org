@@ -1,7 +1,15 @@
 'use server'
 
+import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+
+function getCallbackUrl() {
+  const headersList = headers()
+  const host = headersList.get('host') ?? 'localhost:3000'
+  const proto = host.startsWith('localhost') ? 'http' : 'https'
+  return `${proto}://${host}/auth/callback`
+}
 
 export async function signInWithMagicLink(email: string): Promise<{ error?: string }> {
   const supabase = createClient()
@@ -9,7 +17,7 @@ export async function signInWithMagicLink(email: string): Promise<{ error?: stri
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      emailRedirectTo: getCallbackUrl(),
     },
   })
 
@@ -23,7 +31,7 @@ export async function signInWithGoogle(): Promise<{ error?: string } | void> {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      redirectTo: getCallbackUrl(),
     },
   })
 
