@@ -49,8 +49,10 @@ export type Database = {
           avatar_url: string | null;
           bio: string | null;
           industry: string | null;
-          career_stage: "entry" | "mid" | "senior" | "exec" | null;
+          career_stage: "early" | "mid" | "senior" | "exec" | null;
+          current_work_setup: "on-site" | "hybrid" | "remote" | "freelance" | null;
           remote_goal:
+            | "negotiating-wfh"
             | "exploring"
             | "job-hunting"
             | "freelancing"
@@ -70,8 +72,10 @@ export type Database = {
           avatar_url?: string | null;
           bio?: string | null;
           industry?: string | null;
-          career_stage?: "entry" | "mid" | "senior" | "exec" | null;
+          career_stage?: "early" | "mid" | "senior" | "exec" | null;
+          current_work_setup?: "on-site" | "hybrid" | "remote" | "freelance" | null;
           remote_goal?:
+            | "negotiating-wfh"
             | "exploring"
             | "job-hunting"
             | "freelancing"
@@ -91,8 +95,10 @@ export type Database = {
           avatar_url?: string | null;
           bio?: string | null;
           industry?: string | null;
-          career_stage?: "entry" | "mid" | "senior" | "exec" | null;
+          career_stage?: "early" | "mid" | "senior" | "exec" | null;
+          current_work_setup?: "on-site" | "hybrid" | "remote" | "freelance" | null;
           remote_goal?:
+            | "negotiating-wfh"
             | "exploring"
             | "job-hunting"
             | "freelancing"
