@@ -11,11 +11,9 @@ const DEFAULT_VISIBLE = 3
 export function ReplyThread({
   postId,
   channelId,
-  currentUserId,
 }: {
   postId: string
   channelId: string
-  currentUserId: string
 }) {
   const [replies, setReplies] = useState<RawPostRow[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -68,6 +66,7 @@ export function ReplyThread({
       {visible.map((reply) => (
         <div key={reply.id} className="flex gap-2.5">
           {reply.author?.avatar_url ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={reply.author.avatar_url}
               alt={reply.author.full_name}

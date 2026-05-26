@@ -7,7 +7,6 @@ import { timeAgo } from '@/lib/utils'
 import type { PostWithMeta } from '@/types/feed'
 import { ReplyThread } from './ReplyThread'
 
-const CLAMP_LINES = 4
 
 export function PostCard({
   post,
@@ -81,6 +80,7 @@ export function PostCard({
         <div className="flex items-start gap-3 min-w-0">
           <Link href={`/profile/${post.author_id}`} className="shrink-0">
             {post.author.avatar_url ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={post.author.avatar_url}
                 alt={post.author.full_name}
@@ -181,7 +181,6 @@ export function PostCard({
         <ReplyThread
           postId={post.id}
           channelId={post.channel_id}
-          currentUserId={currentUserId}
         />
       )}
     </article>

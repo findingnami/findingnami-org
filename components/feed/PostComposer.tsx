@@ -93,6 +93,7 @@ export function PostComposer({
       <div className="flex gap-3">
         {/* Avatar */}
         {userProfile.avatar_url ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={userProfile.avatar_url}
             alt={userProfile.full_name}

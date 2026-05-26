@@ -130,6 +130,7 @@ export function Sidebar({ profile, channels }: { profile: Profile; channels: Cha
           <div className="px-4 py-4 border-t border-gray-100">
             <div className="flex items-center gap-2.5 mb-3">
               {profile.avatar_url ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={profile.avatar_url}
                   alt={profile.full_name}

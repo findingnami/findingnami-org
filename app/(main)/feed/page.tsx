@@ -184,6 +184,7 @@ export default async function FeedPage({
                     className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
                   >
                     {member.avatar_url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={member.avatar_url}
                         alt={member.full_name}

@@ -250,6 +250,7 @@ export function OnboardingForm({ userId }: { userId: string }) {
               aria-label="Upload profile photo"
             >
               {avatarPreview ? (
+                // eslint-disable-next-line @next/next/no-img-element -- data: URL from FileReader, not supported by next/image
                 <img
                   src={avatarPreview}
                   alt="Your photo"
