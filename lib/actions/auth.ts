@@ -5,8 +5,10 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 
 function getCallbackUrl() {
-  const headersList = headers()
-  const host = headersList.get('host') ?? 'localhost:3000'
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`
+  }
+  const host = headers().get('host') ?? 'localhost:3000'
   const proto = host.startsWith('localhost') ? 'http' : 'https'
   return `${proto}://${host}/auth/callback`
 }
