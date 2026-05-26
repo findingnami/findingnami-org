@@ -4,6 +4,8 @@ import { createClient } from '@/lib/supabase/server'
 import { getEvents } from '@/lib/actions/events'
 import { EventCard } from '@/components/events/EventCard'
 
+export const metadata = { title: 'Events — Finding Nami' }
+
 export default async function EventsPage({
   searchParams,
 }: {

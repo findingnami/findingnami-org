@@ -23,12 +23,14 @@ export function RealtimeFeed({
   initialPosts,
   channelId,
   channelSlug,
+  authorId,
   channels,
   userProfile,
 }: {
   initialPosts: PostWithMeta[]
   channelId: string | null
   channelSlug: string | null
+  authorId?: string | null
   channels: Channel[]
   userProfile: UserProfile
 }) {
@@ -153,7 +155,7 @@ export function RealtimeFeed({
       setIsLoadingMore(false)
       return
     }
-    const { posts: more } = await fetchMorePosts(cursor, channelId)
+    const { posts: more } = await fetchMorePosts(cursor, channelId, authorId)
     setPosts((prev) => [...prev, ...more])
     setHasMore(more.length === 20)
     setIsLoadingMore(false)

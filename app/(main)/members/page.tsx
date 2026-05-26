@@ -5,6 +5,8 @@ import { MemberCard } from '@/components/members/MemberCard'
 import { MemberFilters } from '@/components/members/MemberFilters'
 import { MemberGrid } from '@/components/members/MemberGrid'
 
+export const metadata = { title: 'Members — Finding Nami' }
+
 export default async function MembersPage({
   searchParams,
 }: {

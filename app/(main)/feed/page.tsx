@@ -9,7 +9,7 @@ export const metadata = { title: 'Feed — Finding Nami' }
 export default async function FeedPage({
   searchParams,
 }: {
-  searchParams?: { channel?: string }
+  searchParams?: { channel?: string; author?: string }
 }) {
   const supabase = createClient()
   const {
@@ -18,6 +18,7 @@ export default async function FeedPage({
   if (!user) redirect('/login')
 
   const channelSlug = searchParams?.channel ?? null
+  const authorId = searchParams?.author ?? null
 
   // Resolve channel slug → ID
   let channelId: string | null = null
@@ -47,7 +48,7 @@ export default async function FeedPage({
     .order('name')
 
   // Fetch initial posts
-  const initialPosts = await fetchPostsWithMeta(supabase, user.id, { channelId })
+  const initialPosts = await fetchPostsWithMeta(supabase, user.id, { channelId, authorId })
 
   // ── Right sidebar data ──
 
@@ -106,6 +107,7 @@ export default async function FeedPage({
             initialPosts={initialPosts}
             channelId={channelId}
             channelSlug={channelSlug}
+            authorId={authorId}
             channels={channelList}
             userProfile={userProfile}
           />

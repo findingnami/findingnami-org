@@ -13,6 +13,7 @@ export async function fetchPostsWithMeta(
   userId: string,
   options: {
     channelId?: string | null
+    authorId?: string | null
     cursor?: string // created_at of the last loaded post
     limit?: number
   }
@@ -32,6 +33,9 @@ export async function fetchPostsWithMeta(
 
   if (options.channelId) {
     query = query.eq('channel_id', options.channelId)
+  }
+  if (options.authorId) {
+    query = query.eq('author_id', options.authorId)
   }
   if (options.cursor) {
     query = query.lt('created_at', options.cursor)
@@ -182,7 +186,8 @@ export async function toggleLike(postId: string): Promise<{ error?: string }> {
 
 export async function fetchMorePosts(
   cursor: string,
-  channelId: string | null
+  channelId: string | null,
+  authorId?: string | null
 ): Promise<{ posts: PostWithMeta[]; error?: string }> {
   const supabase = createClient()
   const {
@@ -190,7 +195,7 @@ export async function fetchMorePosts(
   } = await supabase.auth.getUser()
   if (!user) return { posts: [], error: 'Not authenticated' }
 
-  const posts = await fetchPostsWithMeta(supabase, user.id, { channelId, cursor })
+  const posts = await fetchPostsWithMeta(supabase, user.id, { channelId, authorId, cursor })
   return { posts }
 }
 

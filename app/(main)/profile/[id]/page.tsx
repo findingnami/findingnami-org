@@ -1,9 +1,23 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { getMemberProfile } from '@/lib/supabase/queries'
 import { ProfilePostCard } from '@/components/members/ProfilePostCard'
 import { formatEventDate } from '@/lib/utils'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string }
+}): Promise<Metadata> {
+  const profile = await getMemberProfile(params.id)
+  if (!profile) return { title: 'Member — Finding Nami' }
+  return {
+    title: `${profile.full_name} — Finding Nami`,
+    description: profile.bio ?? `${profile.full_name}'s profile on Finding Nami`,
+  }
+}
 
 const GOAL_BADGES: Record<string, { label: string; className: string }> = {
   'negotiating-wfh': { label: '🏠 Negotiating WFH', className: 'bg-blue-50 text-blue-600' },
