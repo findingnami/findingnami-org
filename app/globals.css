@@ -12,7 +12,7 @@
 
 @layer base {
   html {
-    @apply text-stone-900;
+    @apply text-stone-900 scroll-smooth;
   }
   body {
     @apply bg-white font-sans antialiased;
