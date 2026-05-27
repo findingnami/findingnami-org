@@ -16,6 +16,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["Nunito", "sans-serif"],
+        heading: ["Sergio Trendy", "sans-serif"],
       },
     },
   },
