@@ -10,17 +10,14 @@ export default function MarketingNav() {
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-stone-100">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/">
           <Image
             src="/findingnami-logo.png"
             alt="Finding Nami"
-            width={32}
-            height={32}
-            className="h-8 w-auto"
+            width={160}
+            height={40}
+            className="h-10 w-auto"
           />
-          <span className="font-extrabold text-2xl text-brand-orange font-sans">
-            Finding Nami
-          </span>
         </Link>
 
         {/* Desktop nav */}

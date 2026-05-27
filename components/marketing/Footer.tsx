@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -6,7 +7,13 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Brand */}
         <div className="flex flex-col gap-3">
-          <span className="font-extrabold text-xl text-brand-orange">Finding Nami</span>
+          <Image
+            src="/findingnami-logo.png"
+            alt="Finding Nami"
+            width={140}
+            height={36}
+            className="h-9 w-auto"
+          />
           <p className="text-sm text-stone-500 leading-relaxed">
             Helping Filipina professionals find remote work, find community, and find themselves.
           </p>
