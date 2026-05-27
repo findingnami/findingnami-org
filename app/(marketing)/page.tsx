@@ -1,26 +1,41 @@
+import MarketingNav from "@/components/marketing/MarketingNav";
+import HeroSection from "@/components/marketing/HeroSection";
+import FeaturesSection from "@/components/marketing/FeaturesSection";
+import ForYouSection from "@/components/marketing/ForYouSection";
+import TestimonialsSection from "@/components/marketing/TestimonialsSection";
+import FoundingCTA from "@/components/marketing/FoundingCTA";
+import Footer from "@/components/marketing/Footer";
+
 export default function LandingPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-6 py-24 text-center">
-        <h1 className="text-4xl font-extrabold text-stone-900 mb-4">
-          Finding Nami
-        </h1>
-        <p className="text-lg text-stone-600 mb-3">
-          Your community for building a remote career on your own terms.
+    <main className="min-h-screen bg-white font-sans">
+      <MarketingNav />
+
+      <HeroSection />
+
+      {/* Social proof bar */}
+      <div className="bg-stone-50 border-y border-stone-100 py-4">
+        <p className="text-center text-sm text-stone-400 font-medium tracking-wide">
+          Joined by Filipina professionals from{" "}
+          <span className="text-stone-500">BPO</span>
+          {" · "}
+          <span className="text-stone-500">Corporate</span>
+          {" · "}
+          <span className="text-stone-500">Freelance</span>
+          {" · "}
+          <span className="text-stone-500">OFW returnees</span>
         </p>
-        <p className="text-base text-stone-500 mb-1">
-          Just enter your email to get started.
-        </p>
-        <p className="text-sm text-stone-400 mb-8">
-          No password needed. We&apos;ll send you a magic link and you&apos;re in.
-        </p>
-        <a
-          href="/login"
-          className="inline-block bg-brand-orange text-white font-semibold px-8 py-3 rounded-xl hover:opacity-90 transition"
-        >
-          Join the community
-        </a>
       </div>
+
+      <FeaturesSection />
+
+      <ForYouSection />
+
+      <TestimonialsSection />
+
+      <FoundingCTA />
+
+      <Footer />
     </main>
   );
 }
