@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          orange: "#e07e4a",
-          green: "#97a069",
+          orange: "#97a069",
+          green: "#e07e4a",
         },
       },
       fontFamily: {
